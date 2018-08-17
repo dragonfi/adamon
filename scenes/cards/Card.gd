@@ -1,9 +1,7 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
 signal selected
+signal counter_reached_zero
 
 export var counter = 2
 export var inactive = false
@@ -33,15 +31,18 @@ func _ready():
 func update_counter(count):
 	counter = count
 	label.text = str(counter)
+	print("counter:", counter)
 	if counter <= 0:
 		button.disabled = true
+		emit_signal("counter_reached_zero")
 	label_animation.queue("UpdateLabel")
 
 func disable():
 	button.disabled = true
 
 func enable():
-	button.disabled = false
+	if counter > 0:
+		button.disabled = false
 	if selected:
 		selected = false
 		animation.queue("DeselectButton")
@@ -59,6 +60,8 @@ func _on_TextureButton_mouse_exited():
 
 
 func _on_TextureButton_pressed():
+	if button.disabled:
+		return
 	selected = true
 	animation.queue("SelectButton")
 	emit_signal("selected")

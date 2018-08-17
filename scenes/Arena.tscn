@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Arena.gd" type="Script" id=1]
 [ext_resource path="res://scenes/OpponentAdamon.tscn" type="PackedScene" id=2]
@@ -87,10 +87,10 @@ tracks/5/keys = {
 "values": [ Vector2( 2, 2 ), Vector2( 2, 2 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 resource_name = "OpponentWins"
-length = 0.8
+length = 0.6
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -100,7 +100,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 0 ) ]
@@ -112,10 +112,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("AttackAnimation/OpponentAttack:scale")
@@ -124,10 +124,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 32, 32 ) ]
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AttackAnimation/OpponentAttack:position")
@@ -160,16 +160,16 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.8 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2, 2 ), Vector2( 1e-05, 1e-05 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 resource_name = "PlayerWins"
-length = 0.8
+length = 0.6
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -179,10 +179,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AttackAnimation/OpponentAttack:modulate")
@@ -191,10 +191,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("AttackAnimation/OpponentAttack:scale")
@@ -239,16 +239,16 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 32, 32 ) ]
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=4]
 
-resource_name = "Tie"
-length = 0.8
+resource_name = "Pasted Animation"
+length = 0.6
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -258,10 +258,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("AttackAnimation/OpponentAttack:modulate")
@@ -270,10 +270,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("AttackAnimation/OpponentAttack:scale")
@@ -282,10 +282,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ), Vector2( 32, 32 ) ]
+"values": [ Vector2( 2, 2 ), Vector2( 2, 2 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AttackAnimation/OpponentAttack:position")
@@ -324,6 +324,37 @@ tracks/5/keys = {
 "values": [ Vector2( 2, 2 ), Vector2( 2, 2 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+
+resource_name = "Explosion"
+length = 0.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 32, 32 ) ]
+}
+
 [node name="Arena" type="Node2D" index="0"]
 
 scale = Vector2( 2, 2 )
@@ -347,9 +378,9 @@ playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/MutualAttack = SubResource( 1 )
-anims/OpponentWins = SubResource( 3 )
-anims/PlayerWins = SubResource( 4 )
-anims/Tie = SubResource( 2 )
+anims/OpponentWins = SubResource( 2 )
+anims/PlayerWins = SubResource( 3 )
+anims/Tie = SubResource( 4 )
 blend_times = [  ]
 script = ExtResource( 5 )
 
@@ -361,15 +392,39 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackAnimation/PlayerAttack" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Explosion = SubResource( 5 )
+blend_times = [  ]
+
 [node name="OpponentAttack" type="Sprite" parent="AttackAnimation" index="1"]
 
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 240, 380 )
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackAnimation/OpponentAttack" index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Explosion = SubResource( 5 )
+blend_times = [  ]
+
+[connection signal="fainted" from="OpponentAdamon" to="." method="_on_OpponentAdamon_fainted"]
+
 [connection signal="select_element" from="OpponentAdamon" to="." method="_on_OpponentAdamon_select_element"]
+
+[connection signal="fainted" from="PlayerAdamon" to="." method="_on_PlayerAdamon_fainted"]
 
 [connection signal="select_element" from="PlayerAdamon" to="." method="_on_PlayerAdamon_select_element"]
 

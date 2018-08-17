@@ -30,9 +30,15 @@ position = Vector2( -40, 0 )
 
 position = Vector2( 40, 0 )
 
+[connection signal="counter_reached_zero" from="Hand/NatureCard" to="." method="_on_counter_reached_zero"]
+
 [connection signal="selected" from="Hand/NatureCard" to="." method="_on_NatureCard_selected"]
 
+[connection signal="counter_reached_zero" from="Hand/MachineCard" to="." method="_on_counter_reached_zero"]
+
 [connection signal="selected" from="Hand/MachineCard" to="." method="_on_MachineCard_selected"]
+
+[connection signal="counter_reached_zero" from="Hand/WasteCard" to="." method="_on_counter_reached_zero"]
 
 [connection signal="selected" from="Hand/WasteCard" to="." method="_on_WasteCard_selected"]
 

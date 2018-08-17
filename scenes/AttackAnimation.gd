@@ -1,23 +1,27 @@
 extends AnimationPlayer
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+const Elements = preload("res://scenes/elements.gd")
 
 signal finished
 
 var player_attack
 var opponent_attack
 
+var player_animation_player
+var opponent_animation_player
+
 var element_sprites = {
-	"nature": "res://images/nature.png",
-	"machine": "res://images/gear.png",
-	"waste": "res://images/radioactive.png"
+	Elements.NATURE: "res://images/nature.png",
+	Elements.MACHINE: "res://images/gear.png",
+	Elements.WASTE: "res://images/radioactive.png"
 }
 
 func _ready():
 	player_attack = get_node("PlayerAttack")
 	opponent_attack = get_node("OpponentAttack")
+	
+	player_animation_player = get_node("PlayerAttack/AnimationPlayer")
+	opponent_animation_player = get_node("OpponentAttack/AnimationPlayer")
 	
 	player_attack.modulate = Color(1, 1, 1, 0)
 	opponent_attack.modulate = Color(1, 1, 1, 0)
@@ -42,6 +46,14 @@ func play_player_wins():
 func play_opponent_wins():
 	play("OpponentWins")
 	yield(self, "animation_finished")
+	emit_signal("finished")
+
+func play_player_explosion():
+	opponent_animation_player.play("Explosion")
+	emit_signal("finished")
+
+func play_opponent_explosion():
+	player_animation_player.play("Explosion")
 	emit_signal("finished")
 
 #func _process(delta):

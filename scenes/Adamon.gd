@@ -1,23 +1,21 @@
 extends Node2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+const Elements = preload("res://scenes/elements.gd")
+
 signal select_element
+signal fainted
 
-var elements = ["nature", "machine", "waste"]
-
+var has_fainted = false
 var cards
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
 	cards = {
-		"nature": get_node("Hand/NatureCard"),
-		"machine": get_node("Hand/MachineCard"),
-		"waste": get_node("Hand/WasteCard")
-		}
-	pass
+		Elements.NATURE: get_node("Hand/NatureCard"),
+		Elements.MACHINE: get_node("Hand/MachineCard"),
+		Elements.WASTE: get_node("Hand/WasteCard")
+	}
 
 func random_choice(dict):
 	var values = dict.values()
@@ -36,8 +34,8 @@ func enable_buttons():
 	for key in cards:
 		cards[key].enable()
 
-func take_damage(element = ""):
-	var card = cards[element] if element else random_choice(cards)
+func take_damage(element = Elements.NONE):
+	var card = cards[element] if element != Elements.NONE else random_choice(cards)
 	card.update_counter(card.counter - 1)
 
 func clear_selection():
@@ -46,12 +44,21 @@ func clear_selection():
 
 func _on_NatureCard_selected():
 	disable_buttons()
-	emit_signal("select_element", "nature")
+	emit_signal("select_element", Elements.NATURE)
 
 func _on_MachineCard_selected():
 	disable_buttons()
-	emit_signal("select_element", "machine")
+	emit_signal("select_element", Elements.MACHINE)
 
 func _on_WasteCard_selected():
 	disable_buttons()
-	emit_signal("select_element", "waste")
+	emit_signal("select_element", Elements.WASTE)
+
+
+func _on_counter_reached_zero():
+	var can_still_fight = false
+	for element in cards:
+		can_still_fight = can_still_fight or cards[element].counter > 0
+	if not can_still_fight:
+		has_fainted = true
+		emit_signal("fainted")
