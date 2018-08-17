@@ -5,6 +5,7 @@ const Elements = preload("res://scenes/elements.gd")
 signal select_element
 signal fainted
 
+var controls_are_disabled = false
 var has_fainted = false
 var cards
 
@@ -17,6 +18,15 @@ func _ready():
 		Elements.WASTE: get_node("Hand/WasteCard")
 	}
 
+func reset_with_element_counts(nature, machine, waste):
+	cards[Elements.NATURE].update_counter(nature)
+	cards[Elements.MACHINE].update_counter(machine)
+	cards[Elements.WASTE].update_counter(waste)
+	
+	has_fainted = false
+	
+	clear_selection()
+
 func random_choice(dict):
 	var values = dict.values()
 	return values[randi() % len(values)]
@@ -27,10 +37,12 @@ func random_choice(dict):
 #	pass
 
 func disable_buttons():
+	controls_are_disabled = true
 	for key in cards:
 		cards[key].disable()
 
 func enable_buttons():
+	controls_are_disabled = false
 	for key in cards:
 		cards[key].enable()
 
@@ -40,7 +52,6 @@ func take_damage(element = Elements.NONE):
 
 func clear_selection():
 	enable_buttons()
-	
 
 func _on_NatureCard_selected():
 	disable_buttons()

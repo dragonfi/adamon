@@ -8,6 +8,5 @@
 [node name="TextureButton" parent="CenterContainer" index="0"]
 
 texture_normal = ExtResource( 2 )
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "Textures" ]
 
 

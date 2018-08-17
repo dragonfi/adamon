@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/cards/Card.gd" type="Script" id=1]
 [ext_resource path="res://images/empty.png" type="Texture" id=2]
 [ext_resource path="res://scenes/cards/ScaleButton.tres" type="Animation" id=3]
-[ext_resource path="res://fonts/PressStart2P-Regular.tres" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -176,7 +176,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
 }
 
-[node name="Card" type="Node2D" index="0"]
+[node name="Card" type="Node2D"]
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Rect", "Textures", "Transform", "Z Index" ]

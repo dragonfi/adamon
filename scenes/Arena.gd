@@ -7,6 +7,9 @@ var opponent_adamon
 
 var attack_animation
 
+var indicator_label
+var restart_button
+
 var player_element = Elements.NONE
 var opponent_element = Elements.NONE
 
@@ -23,11 +26,31 @@ func _ready():
 	opponent_adamon = get_node("OpponentAdamon")
 	
 	attack_animation = get_node("AttackAnimation")
+	
+	indicator_label = get_node("IndicatorLabel")
+	restart_button = get_node("RestartButton")
+	
+	reset_arena()
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
+
+func reset_arena():
+	indicator_label.hide()
+	restart_button.hide()
+	player_adamon.reset_with_element_counts(3, 3, 3)
+	opponent_adamon.reset_with_element_counts(3, 3, 3)
+	waiting_for_players = []
+	state = ATTACK
+	player_element = Elements.NONE
+	opponent_element = Elements.NONE
+
+func show_game_end_message(message):
+	indicator_label.text = message
+	indicator_label.show()
+	restart_button.show()
 
 func start_next_round():
 	state = ATTACK
@@ -38,6 +61,7 @@ func start_next_round():
 func check_for_tie():
 	if player_adamon.has_fainted and opponent_adamon.has_fainted:
 		print("both adamons fainted, it's a tie")
+		show_game_end_message("It's a tie!")
 		return true
 	return false
 
@@ -46,8 +70,10 @@ func check_end_conditions():
 		pass
 	elif player_adamon.has_fainted:
 		print("player adamon fainted, opponent won")
+		show_game_end_message("Opponent wins!")
 	elif opponent_adamon.has_fainted:
 		print("opponent adamon fainted, player won")
+		show_game_end_message("Player wins!")
 	else:
 		return
 
@@ -126,6 +152,13 @@ func _on_OpponentAdamon_select_element(element):
 
 func _on_OpponentAdamon_fainted():
 	check_for_tie()
+	if player_adamon.controls_are_disabled:
+		show_game_end_message("Player wins!")
 
 func _on_PlayerAdamon_fainted():
 	check_for_tie()
+	if opponent_adamon.controls_are_disabled:
+		show_game_end_message("Opponent wins!")
+
+func _on_RestartButton_pressed():
+	reset_arena()
