@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Adamon.tscn" type="PackedScene" id=1]
+
+[node name="OpponentAdamon" instance=ExtResource( 1 )]
+
+script = null
+
+[node name="Hand" parent="." index="1"]
+
+position = Vector2( 0, -90 )
+
+

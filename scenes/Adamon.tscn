@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/Adamon.gd" type="Script" id=1]
+[ext_resource path="res://images/adamon.png" type="Texture" id=2]
+[ext_resource path="res://scenes/cards/NatureCard.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/cards/MachineCard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/cards/WasteCard.tscn" type="PackedScene" id=5]
+
+[node name="Adamon" type="Node2D"]
+
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Hand" type="Node2D" parent="." index="1"]
+
+position = Vector2( 0, 90 )
+
+[node name="NatureCard" parent="Hand" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( -40, 0 )
+
+[node name="MachineCard" parent="Hand" index="1" instance=ExtResource( 4 )]
+
+[node name="WasteCard" parent="Hand" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( 40, 0 )
+
+[connection signal="selected" from="Hand/NatureCard" to="." method="_on_NatureCard_selected"]
+
+[connection signal="selected" from="Hand/MachineCard" to="." method="_on_MachineCard_selected"]
+
+[connection signal="selected" from="Hand/WasteCard" to="." method="_on_WasteCard_selected"]
+
+
