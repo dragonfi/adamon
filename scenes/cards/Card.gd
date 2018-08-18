@@ -46,6 +46,7 @@ func enable():
 	if selected:
 		selected = false
 		animation.queue("DeselectButton")
+	return not button.disabled
 
 func _on_TextureButton_mouse_entered():
 	if button.disabled:

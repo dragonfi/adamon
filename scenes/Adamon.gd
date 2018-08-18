@@ -42,9 +42,11 @@ func disable_buttons():
 		cards[key].disable()
 
 func enable_buttons():
-	controls_are_disabled = false
+	var still_have_controls = false
 	for key in cards:
-		cards[key].enable()
+		var new_status = cards[key].enable()
+		still_have_controls = still_have_controls or new_status
+	controls_are_disabled = not still_have_controls
 
 func take_damage(element = Elements.NONE):
 	var card = cards[element] if element != Elements.NONE else random_choice(cards)
