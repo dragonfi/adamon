@@ -12,7 +12,7 @@ config_version=3
 
 config/name="Adamon"
 run/main_scene="res://scenes/Arena.tscn"
-config/icon="res://images/icon.png"
+config/icon="res://images/adamon_trainer_icon_128.png"
 
 [display]
 
