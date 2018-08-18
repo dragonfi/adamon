@@ -18,6 +18,7 @@ config/icon="res://images/icon.png"
 
 window/size/width=480
 window/size/height=800
+window/handheld/orientation="portrait"
 window/stretch/shrink="1"
 
 [rendering]
