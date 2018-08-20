@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/Arena.gd" type="Script" id=1]
 [ext_resource path="res://scenes/AiOpponentAdamon.tscn" type="PackedScene" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://images/radioactive.png" type="Texture" id=6]
 [ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://new_styleboxtexture.tres" type="StyleBox" id=8]
+[ext_resource path="res://sounds/fanfare.wav" type="AudioStream" id=9]
+[ext_resource path="res://sounds/select2.wav" type="AudioStream" id=10]
+[ext_resource path="res://sounds/explosion.wav" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
 
@@ -893,6 +896,40 @@ text = "Restart"
 flat = false
 align = 1
 _sections_unfolded = [ "Theme" ]
+
+[node name="FanfarePlayer" type="AudioStreamPlayer" parent="." index="5"]
+
+stream = ExtResource( 9 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="." index="6"]
+
+stream = ExtResource( 10 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="ExplosionSound" type="AudioStreamPlayer" parent="." index="7"]
+
+stream = ExtResource( 11 )
+volume_db = -20.0
+pitch_scale = 1.0
+autoplay = false
+mix_target = 0
+bus = "Master"
+
+[node name="Timer" type="Timer" parent="." index="8"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
 
 [connection signal="fainted" from="OpponentAdamon" to="." method="_on_OpponentAdamon_fainted"]
 

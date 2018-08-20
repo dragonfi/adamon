@@ -58,6 +58,57 @@ func start_next_round():
 	opponent_adamon.clear_selection()
 	check_end_conditions()
 
+func play_win_fanfare():
+	var fanfare = get_node("FanfarePlayer")
+	var timer = get_node("Timer")
+	fanfare.pitch_scale = 1
+	fanfare.play()
+	timer.wait_time = 0.15
+	timer.start()
+	yield(timer, "timeout")
+	fanfare.pitch_scale = 2
+	fanfare.play()
+	timer.wait_time = 0.15
+	timer.start()
+	yield(timer, "timeout")
+	fanfare.pitch_scale = 3
+	fanfare.play()
+	timer.wait_time = 0.15
+	timer.start()
+	yield(timer, "timeout")
+	fanfare.pitch_scale = 4
+	fanfare.play()
+
+func play_lose_fanfare():
+	var fanfare = get_node("FanfarePlayer")
+	var timer = get_node("Timer")
+	fanfare.pitch_scale = 1
+	fanfare.play()
+	timer.wait_time = 0.3
+	timer.start()
+	yield(timer, "timeout")
+	fanfare.pitch_scale = 0.5
+	fanfare.play()
+	timer.wait_time = 0.3
+	timer.start()
+	yield(timer, "timeout")
+	fanfare.pitch_scale = 0.25
+	fanfare.play()
+
+func play_tie_fanfare():
+	var fanfare = get_node("FanfarePlayer")
+	var timer = get_node("Timer")
+	fanfare.pitch_scale = 1
+	fanfare.play()
+	timer.wait_time = 0.3
+	timer.start()
+	yield(timer, "timeout")
+	fanfare.play()
+	timer.wait_time = 0.15
+	timer.start()
+	yield(timer, "timeout")
+	fanfare.play()
+
 func check_end_conditions():
 	print("checking conditions")
 	print("controls:", player_adamon.controls_are_disabled, opponent_adamon.controls_are_disabled)
@@ -65,12 +116,15 @@ func check_end_conditions():
 	if player_adamon.has_fainted and opponent_adamon.has_fainted:
 		print("both adamons fainted, it's a tie")
 		show_game_end_message("It's a tie!")
+		play_tie_fanfare()
 	elif player_adamon.has_fainted and all_controls_are_disabled:
 		print("player adamon fainted, opponent won")
 		show_game_end_message("Opponent wins!")
+		play_lose_fanfare()
 	elif opponent_adamon.has_fainted and all_controls_are_disabled:
 		print("opponent adamon fainted, player won")
 		show_game_end_message("Player wins!")
+		play_win_fanfare()
 	else:
 		return
 
@@ -122,6 +176,7 @@ func evaluate_turn():
 	opponent_element = Elements.NONE
 
 func _on_PlayerAdamon_select_element(element):
+	get_node("SelectSound").play()
 	if state == ATTACK:
 		print("player selected: ", element)
 		player_element = element
@@ -131,6 +186,7 @@ func _on_PlayerAdamon_select_element(element):
 			opponent_adamon.ai_select_attack()
 	elif state == DISCARD:
 		attack_animation.play_player_explosion()
+		get_node("ExplosionSound").play()
 		player_adamon.take_damage(element)
 		player_adamon.enable_buttons()
 		player_adamon.disable_buttons()
@@ -150,6 +206,7 @@ func _on_OpponentAdamon_select_element(element):
 			evaluate_turn()
 	elif state == DISCARD:
 		attack_animation.play_opponent_explosion()
+		get_node("ExplosionSound").play()
 		opponent_adamon.take_damage(element)
 		opponent_adamon.enable_buttons()
 		opponent_adamon.disable_buttons()
