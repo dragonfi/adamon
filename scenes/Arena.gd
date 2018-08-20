@@ -32,10 +32,15 @@ func _ready():
 	
 	reset_arena()
 
-#func _process(delta):
-#	# Called every frame. Delta is time since last frame.
-#	# Update game logic here.
-#	pass
+func _process(delta):
+	var background = get_node("Background")
+	var bg_image = get_node("Background/Background")
+	var global_bg_width = bg_image.scale.x * bg_image.texture.get_width()
+		
+	background.position.x -= 0.25
+	if background.position.x < -global_bg_width:
+		background.position.x = 0
+	pass
 
 func reset_arena():
 	indicator_label.hide()
