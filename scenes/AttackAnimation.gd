@@ -50,11 +50,9 @@ func play_opponent_wins():
 
 func play_player_explosion():
 	opponent_animation_player.play("Explosion")
-	emit_signal("finished")
 
 func play_opponent_explosion():
 	player_animation_player.play("Explosion")
-	emit_signal("finished")
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
