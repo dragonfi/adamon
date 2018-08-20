@@ -40,8 +40,8 @@ func _ready():
 func reset_arena():
 	indicator_label.hide()
 	restart_button.hide()
-	player_adamon.reset_with_element_counts(1, 1, 1)
-	opponent_adamon.reset_with_element_counts(1, 1, 1)
+	player_adamon.reset_with_element_counts(2, 2, 2)
+	opponent_adamon.reset_with_element_counts(2, 2, 2)
 	waiting_for_players = []
 	state = ATTACK
 	player_element = Elements.NONE
@@ -93,6 +93,8 @@ func evaluate_turn():
 		waiting_for_players = [PLAYER, OPPONENT]
 		player_adamon.clear_selection()
 		opponent_adamon.clear_selection()
+		if player_adamon.has_fainted:
+			opponent_adamon.ai_select_discard()
 		check_end_conditions()
 
 	elif Elements.is_stronger_element(player_element, opponent_element):
@@ -103,6 +105,7 @@ func evaluate_turn():
 		state = DISCARD
 		waiting_for_players = [OPPONENT]
 		opponent_adamon.clear_selection()
+		opponent_adamon.ai_select_discard()
 		check_end_conditions()
 		
 	else:
@@ -124,6 +127,8 @@ func _on_PlayerAdamon_select_element(element):
 		player_element = element
 		if opponent_element:
 			evaluate_turn()
+		else:
+			opponent_adamon.ai_select_attack()
 	elif state == DISCARD:
 		attack_animation.play_player_explosion()
 		player_adamon.take_damage(element)
@@ -134,6 +139,8 @@ func _on_PlayerAdamon_select_element(element):
 		check_end_conditions()
 		if waiting_for_players.empty():
 			start_next_round()
+		else:
+			opponent_adamon.ai_select_discard()
 
 func _on_OpponentAdamon_select_element(element):
 	if state == ATTACK:

@@ -1,14 +1,13 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Arena.gd" type="Script" id=1]
-[ext_resource path="res://scenes/OpponentAdamon.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Adamon.gd" type="Script" id=3]
-[ext_resource path="res://scenes/Adamon.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/AttackAnimation.gd" type="Script" id=5]
-[ext_resource path="res://images/nature.png" type="Texture" id=6]
-[ext_resource path="res://images/radioactive.png" type="Texture" id=7]
-[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=8]
-[ext_resource path="res://new_styleboxtexture.tres" type="StyleBox" id=9]
+[ext_resource path="res://scenes/AiOpponentAdamon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Adamon.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/AttackAnimation.gd" type="Script" id=4]
+[ext_resource path="res://images/nature.png" type="Texture" id=5]
+[ext_resource path="res://images/radioactive.png" type="Texture" id=6]
+[ext_resource path="res://fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://new_styleboxtexture.tres" type="StyleBox" id=8]
 
 [sub_resource type="Animation" id=1]
 
@@ -362,7 +361,7 @@ tracks/1/keys = {
 size = 20
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 8 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=7]
@@ -370,7 +369,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 20
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 8 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="DynamicFont" id=8]
@@ -378,7 +377,7 @@ _sections_unfolded = [ "Font", "Settings" ]
 size = 20
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 8 )
+font_data = ExtResource( 7 )
 _sections_unfolded = [ "Font", "Settings" ]
 
 [sub_resource type="Theme" id=9]
@@ -390,11 +389,11 @@ Button/colors/font_color_hover = Color( 1, 0.679688, 0, 1 )
 Button/colors/font_color_pressed = Color( 1, 1, 0, 1 )
 Button/constants/hseparation = 2
 Button/fonts/font = SubResource( 7 )
-Button/styles/disabled = ExtResource( 9 )
-Button/styles/focus = ExtResource( 9 )
-Button/styles/hover = ExtResource( 9 )
-Button/styles/normal = ExtResource( 9 )
-Button/styles/pressed = ExtResource( 9 )
+Button/styles/disabled = ExtResource( 8 )
+Button/styles/focus = ExtResource( 8 )
+Button/styles/hover = ExtResource( 8 )
+Button/styles/normal = ExtResource( 8 )
+Button/styles/pressed = ExtResource( 8 )
 ButtonGroup/styles/panel = null
 CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -785,9 +784,8 @@ _sections_unfolded = [ "Transform" ]
 [node name="OpponentAdamon" parent="." index="0" instance=ExtResource( 2 )]
 
 position = Vector2( 120, 115 )
-script = ExtResource( 3 )
 
-[node name="PlayerAdamon" parent="." index="1" instance=ExtResource( 4 )]
+[node name="PlayerAdamon" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 120, 270 )
 
@@ -803,14 +801,14 @@ anims/OpponentWins = SubResource( 2 )
 anims/PlayerWins = SubResource( 3 )
 anims/Tie = SubResource( 4 )
 blend_times = [  ]
-script = ExtResource( 5 )
+script = ExtResource( 4 )
 
 [node name="PlayerAttack" type="Sprite" parent="AttackAnimation" index="0"]
 
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 240, 120 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 6 )
+texture = ExtResource( 5 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AttackAnimation/PlayerAttack" index="0"]
@@ -828,7 +826,7 @@ blend_times = [  ]
 modulate = Color( 1, 0, 0, 1 )
 position = Vector2( 240, 380 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AttackAnimation/OpponentAttack" index="0"]

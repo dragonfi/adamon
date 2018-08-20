@@ -27,9 +27,6 @@ func reset_with_element_counts(nature, machine, waste):
 	
 	clear_selection()
 
-func random_choice(dict):
-	var values = dict.values()
-	return values[randi() % len(values)]
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
