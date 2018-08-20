@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Arena.gd" type="Script" id=1]
 [ext_resource path="res://scenes/AiOpponentAdamon.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://sounds/fanfare.wav" type="AudioStream" id=9]
 [ext_resource path="res://sounds/select2.wav" type="AudioStream" id=10]
 [ext_resource path="res://sounds/explosion.wav" type="AudioStream" id=11]
+[ext_resource path="res://images/sound_on.png" type="Texture" id=12]
+[ext_resource path="res://images/sound_off.png" type="Texture" id=13]
+[ext_resource path="res://images/sound_button_disabled.png" type="Texture" id=14]
 
 [sub_resource type="Animation" id=1]
 
@@ -931,6 +934,35 @@ wait_time = 0.2
 one_shot = false
 autostart = false
 
+[node name="Node2D" type="Node2D" parent="." index="9"]
+
+scale = Vector2( 0.5, 0.5 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="TextureButton" type="TextureButton" parent="Node2D" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 45.0
+margin_bottom = 45.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = true
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_disabled = ExtResource( 14 )
+_sections_unfolded = [ "Textures" ]
+
 [connection signal="fainted" from="OpponentAdamon" to="." method="_on_OpponentAdamon_fainted"]
 
 [connection signal="select_element" from="OpponentAdamon" to="." method="_on_OpponentAdamon_select_element"]
@@ -940,5 +972,7 @@ autostart = false
 [connection signal="select_element" from="PlayerAdamon" to="." method="_on_PlayerAdamon_select_element"]
 
 [connection signal="pressed" from="RestartButton" to="." method="_on_RestartButton_pressed"]
+
+[connection signal="toggled" from="Node2D/TextureButton" to="." method="_on_TextureButton_toggled"]
 
 

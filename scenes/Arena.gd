@@ -218,3 +218,6 @@ func _on_OpponentAdamon_select_element(element):
 
 func _on_RestartButton_pressed():
 	reset_arena()
+
+func _on_TextureButton_toggled(button_pressed):
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), button_pressed)
